@@ -42,4 +42,15 @@ df = pd.read_csv('Meteorite_Landings.csv')
 # _______________________________________________________________________________
 
 
+df = df.dropna(subset=["year"])
 
+counts = df.groupby("year").size()
+
+plt.figure(figsize=(10, 6))
+plt.plot(counts.index, counts.values, marker="o", linestyle="-", color="blue")
+
+plt.title("Кількість падінь метеоритів по роках")
+plt.xlabel("Рік")
+plt.ylabel("Кількість")
+plt.grid(True, linestyle="--", alpha=0.6)
+plt.show()
